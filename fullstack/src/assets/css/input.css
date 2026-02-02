@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+/* Que Tailwind escanee las vistas EJS para generar las clases usadas */
+@source "../../views/**/*.ejs";
