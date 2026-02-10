@@ -1,0 +1,32 @@
+<%- contentFor('content') %>
+
+<section>
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <% books.forEach(book => { %>
+        <div class="bg-white rounded-lg shadow-md p-6">
+
+          <h3 class="text-xl font-semibold mb-2"><%= book.title %></h3>
+
+          <p class="text-gray-500 text-sm mb-2">
+            <%= book.category %>
+          </p>
+
+          <p class="font-semibold mb-4">
+            $<%= book.price.toLocaleString() %>
+          </p>
+
+          <a 
+            href="/books/<%= book.id %>"
+            class="bg-blue-100 hover:bg-blue-200 text-blue-600 font-semibold py-2 px-3 rounded"
+          >
+            More info
+          </a>
+
+        </div>
+      <% }) %>
+
+    </div>
+  </div>
+</section>
