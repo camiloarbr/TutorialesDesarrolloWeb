@@ -31,11 +31,11 @@ import { RouterLink, RouterView } from 'vue-router';
             </RouterLink>
 
             <RouterLink
-              to="/contact"
+              to="/books"
               class="flex items-center px-4 py-3 rounded-lg hover:bg-gray-700 transition duration-200"
             >
-              <i class="fas fa-envelope mr-3"></i>
-              <span>Contact</span>
+              <i class="fas fa-book mr-3"></i>
+              <span>Books</span>
             </RouterLink>
           </nav>
         </div>
