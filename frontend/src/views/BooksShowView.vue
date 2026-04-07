@@ -3,11 +3,11 @@
 import BookReviews from '@/components/BookReviews.vue';
 
 import { BookService } from '@/services/BookService.js';
+import type { BookInterface } from '@/interfaces/BookInterface.js';
 import { useRoute } from 'vue-router';
+import { onMounted, ref } from 'vue';
 
-const route = useRoute();
-const bookId = Number(route.params.id);
-const book = BookService.getBookById(bookId);
+const book = ref<BookInterface | null>(null);
 
 function formatToCOP(price: number): string {
   const formatter = new Intl.NumberFormat('es-CO', {
@@ -19,6 +19,12 @@ function formatToCOP(price: number): string {
 
   return formatter.format(price).replace(/^\s*\$\s?/, '');
 }
+
+onMounted(async () => {
+  const route = useRoute();
+  const bookId = Number(route.params.id);
+  book.value = await BookService.getBookById(bookId);
+});
 
 </script>
 

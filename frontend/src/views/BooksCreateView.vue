@@ -1,9 +1,12 @@
 <script setup lang="ts">
 
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
 import { BookService } from '@/services/BookService';
 import type { CreateBookDTO } from '@/dtos/CreateBookDTO.js';
+
+const router = useRouter();
 
 const title = ref('');
 const category = ref('');
@@ -11,7 +14,7 @@ const price = ref(0);
 const stock = ref(0);
 const successMessage = ref('');
 
-function submitForm() {
+async function submitForm() {
   const newBook: CreateBookDTO = {
     title: title.value,
     category: category.value,
@@ -19,12 +22,14 @@ function submitForm() {
     stock: stock.value,
   };
 
-  BookService.createBook(newBook);
+  await BookService.createBook(newBook);
   successMessage.value = 'Book created successfully!';
   title.value = '';
   category.value = '';
   price.value = 0;
   stock.value = 0;
+
+  router.push('/books');
 }
 
 </script>

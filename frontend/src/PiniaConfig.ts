@@ -1,7 +1,5 @@
 import { createPinia } from 'pinia';
 import { watch } from 'vue';
-import { bookSeeder } from '@/stores/bookseeder.js';
-import { reviewSeeder } from '@/stores/reviewseeder.js';
 
 export default class PiniaConfig {
   public static init() {
